@@ -1,0 +1,222 @@
+:root {
+  --lego-yellow: #ffd500; /* LEGO sarısı */
+  --lego-red: #da0019; /* LEGO logosundaki kırmızı */
+}
+
+.main-div {
+  max-width: 40rem ; /* içerik genişliğini sınırlamak için */
+  padding: 6rem 4rem 8rem; /* kenar boşlukları azaltıldı */
+  background-color: #fff;
+  margin: 0 auto;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2rem;
+  border: 1px solid #d7d7d7;
+  box-sizing: border-box;
+}
+
+.mesai-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  width: fit-content;
+  margin: auto;
+}
+.left-div {
+  border: 1px solid var(--lego-yellow);
+  border-radius: 1rem;
+  padding: 5rem;
+}
+.log-div {
+  border: 1px solid var(--lego-yellow);
+  border-radius: 1rem;
+  padding: 1rem;
+  height: 40rem;
+}
+.log-header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.log-header h3 {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.desc {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.desc span {
+  font-size: 1.56rem;
+  color: #000;
+  font-weight: 600;
+}
+
+.icon {
+  font-size: 6rem;
+}
+.color-yellow {
+  color: var(--lego-yellow);
+}
+.color-red {
+  color: var(--lego-red);
+}
+
+.barcode-div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.barcode-div input {
+  border: 1px solid #b1b1b1;
+  border-radius: 0.6rem;
+  padding: 0.5rem;
+  min-width: 18rem;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+
+.btn {
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  height: 40px;
+  width: 100%;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  border: 2px solid transparent;
+  align-self: flex-start; /* Buton inputtan küçüktür, sola yasla */
+}
+
+.btn-yellow:hover,
+.btn-yellow:focus {
+  outline: 0;
+  border: 2px solid var(--lego-red);
+}
+
+.btn-red:hover,
+.btn-red:focus {
+  outline: 0;
+  border: 2px solid #000;
+}
+
+.btn-yellow {
+  background-color: var(--lego-yellow);
+  color: #000;
+}
+.btn-red {
+  background-color: var(--lego-red);
+  color: #fff;
+}
+.log-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.refresh-button {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.refresh-button:hover {
+  background-color: #c82333;
+}
+
+@media screen and (max-width: 1366px) {
+  .main-div {
+    padding: 3rem 2rem 4rem;
+    width: 100%;
+    border-radius: 1.5rem;
+  }
+
+  .mesai-div {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .left-div,
+  .log-div {
+    padding: 2rem;
+    width: 45%;
+    box-sizing: border-box;
+  }
+    .log-div table{
+      font-size: 14px;
+    }
+ .log-div {
+  height: 36rem;
+ }
+  .barcode-div input {
+    min-width: 100%;
+    font-size: 16px;
+  }
+
+  .btn {
+    font-size: 16px;
+    height: 36px;
+    padding: 8px 12px;
+  }
+
+  .icon {
+    font-size: 4rem;
+  }
+
+  .desc span {
+    font-size: 1.3rem;
+  }
+
+  .log-header h3 {
+    font-size: 1rem;
+  }
+
+  .refresh-button {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+}
+@media screen and (max-width: 1366px) {
+  .main-div {
+    padding: 2rem 1rem 4rem;
+  }
+  .panel-div{
+    padding-top: 5rem;
+  }
+}

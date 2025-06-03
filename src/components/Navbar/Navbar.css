@@ -1,0 +1,112 @@
+#lego-logo {
+  height: 80px;
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+}
+
+#logo .brand {
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.navbar {
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #ffd500; /* Lego sarısı */
+  box-shadow: 0 2px 0 0 #da291c; /* Lego kırmızısı */
+  background-color: #ffd500;
+  margin-bottom: 2rem;
+  padding-top: 0.7rem;
+}
+
+.nav-item {
+  padding: 5px;
+}
+
+.container {
+  margin: 0rem 14rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+.nav {
+  display: flex;
+  gap: 3rem;
+}
+a {
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  cursor:pointer;
+}
+
+/* Border çizgisi tanımı */
+a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: #da291c;
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+/* Hover'da genişlik ve animasyon */
+a:hover::after {
+  width: 100%;
+  animation: heartbeat116 1.5s ease-in-out 0.3s infinite;
+}
+
+/* 🌟 Aktif sayfa: sabit çizgi */
+a.active::after {
+  width: 100%;
+}
+
+.admin .admin-icon {
+  margin-right: 15px;
+  font-size: 1.25rem;
+  color: #000000;
+}
+.nav-item span{
+  margin-left: .6rem ;
+}
+
+@media screen and (max-width: 1366px) {
+  #lego-logo {
+    height: 50px; /* Daha küçük logo */
+  }
+
+  #logo .brand {
+    font-size: 1.1rem;
+  }
+
+  .navbar {
+    padding-top: 0.3rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .container {
+    margin: 0rem 2rem; /* Daha dar kenar boşluğu */
+    padding-right: 0.5rem;
+  }
+
+  .nav {
+    gap: 1.5rem;
+  }
+
+  .admin .admin-icon {
+    font-size: 1rem;
+    margin-right: 8px;
+  }
+
+  .nav-item span {
+    margin-left: 0.4rem;
+    font-size: 0.95rem;
+  }
+}

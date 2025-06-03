@@ -1,0 +1,31 @@
+:root {
+  --lego-red: #da0019;
+  --lego-yellow: #ffd500;
+}
+
+.footer {
+  background-color: var(--lego-red);
+  color: white;
+  text-align: center;
+  padding: 1rem 0.5rem;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  border-top: 6px solid var(--lego-yellow);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.footer-text {
+  margin: 0;
+}
+
+.footer-text strong {
+  font-weight: bold;
+}

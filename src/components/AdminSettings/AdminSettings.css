@@ -1,0 +1,104 @@
+.header {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  gap: 1rem;
+  margin: auto;
+  margin-bottom: 3rem;
+}
+.admin-top {
+  display: flex;
+}
+.admin-filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 1rem;
+}
+.admin-main-div {
+  max-width: 1400px;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 1px solid #d7d7d7;
+  box-sizing: border-box;
+}
+
+.admin-panel-div {
+  display: flex;
+  justify-content: center;
+  padding: 4rem 1rem; /* Sağ-sol iç boşluk: küçük ekranlarda kırpmamak için */
+  box-sizing: border-box;
+}
+
+
+.admin-filter .btn,
+.admin-main-div .btn {
+  width: 25%;
+}
+.employee-table {
+  padding-bottom: 2rem;
+}
+.admin-filter label {
+  font-weight: 600;
+}
+
+.admin-filter select {
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.employee-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.employee-table th,
+.employee-table td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+.employee-table th {
+  background-color: #f7f7f7;
+  font-weight: 600;
+}
+
+.gecikme {
+  background-color: #facc15;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.kritik {
+  background-color: #f87171;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* Çıkış butonunu sağ üst köşeye küçültüp konumlandırma */
+.btn-logout {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: transparent;
+  color: #ef4444;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s ease;
+}
+
+.btn-logout:hover {
+  color: #dc2626;
+}
