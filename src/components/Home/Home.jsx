@@ -6,9 +6,6 @@ import {
   faSyncAlt,
   faExclamationTriangle,
   faCheckCircle,
-  faExclamationCircle,
-  faSignOutAlt,
-  faMinusCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { db } from "../../firebase";
 import {
@@ -23,6 +20,7 @@ import {
   limit,
   getDocs,
 } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 const Home = () => {
   const [inputId, setInputId] = useState("");
@@ -40,7 +38,6 @@ const Home = () => {
 
     return Object.entries(grouped).map(([fullName, entries]) => {
       entries.sort((a, b) => a.time.localeCompare(b.time));
-
       let giriş = "-";
       let çıkış = "-";
 
@@ -64,26 +61,23 @@ const Home = () => {
       };
     });
   };
+
   const getEntryStyle = (entryTime) => {
-    if (entryTime === "-") {
-      return { backgroundColor: "#f0f0f0", color: "#6c757d" }; // gri boş
-    }
-    if (entryTime < "08:15:00") {
-      return { backgroundColor: "#d4edda", color: "#155724" }; // yeşil
-    } else if (entryTime < "08:30:00") {
-      return { backgroundColor: "#fff3cd", color: "#856404" }; // sarı
-    } else if (entryTime < "12:00:00") {
-      return { backgroundColor: "#f8d7da", color: "#721c24" }; // kırmızı
-    } else {
-      return { backgroundColor: "#e2e3e5", color: "#383d41" }; // geç veya hatalı
-    }
+    if (entryTime === "-")
+      return { backgroundColor: "#f0f0f0", color: "#6c757d" };
+    if (entryTime < "08:15:00")
+      return { backgroundColor: "#d4edda", color: "#155724" };
+    if (entryTime < "08:30:00")
+      return { backgroundColor: "#fff3cd", color: "#856404" };
+    if (entryTime < "12:00:00")
+      return { backgroundColor: "#f8d7da", color: "#721c24" };
+    return { backgroundColor: "#e2e3e5", color: "#383d41" };
   };
 
   const getExitStyle = (exitTime) => {
-    if (exitTime === "-") {
-      return { backgroundColor: "#f0f0f0", color: "#6c757d" }; // gri boş
-    }
-    return { backgroundColor: "#d1ecf1", color: "#0c5460" }; // mavi
+    if (exitTime === "-")
+      return { backgroundColor: "#f0f0f0", color: "#6c757d" };
+    return { backgroundColor: "#d1ecf1", color: "#0c5460" };
   };
 
   const getEvaluationData = (entryTime) => {
@@ -101,7 +95,7 @@ const Home = () => {
           <FontAwesomeIcon icon={faCheckCircle} style={{ color: "#155724" }} />
         ),
         label: "Normal Giriş",
-        style: { backgroundColor: "#d4edda", color: "#155724" }, // Açık yeşil zemin, koyu yeşil yazı
+        style: { backgroundColor: "#d4edda", color: "#155724" },
       };
     } else if (entryTime < "08:30:00") {
       return {
@@ -112,7 +106,7 @@ const Home = () => {
           />
         ),
         label: "Geç Giriş",
-        style: { backgroundColor: "#fff3cd", color: "#856404" }, // Açık sarı zemin, koyu sarı yazı
+        style: { backgroundColor: "#fff3cd", color: "#856404" },
       };
     } else {
       return {
@@ -123,41 +117,49 @@ const Home = () => {
           />
         ),
         label: "Çok Geç Giriş",
-        style: { backgroundColor: "#f8d7da", color: "#721c24" }, // Açık kırmızı zemin, koyu kırmızı yazı
+        style: { backgroundColor: "#f8d7da", color: "#721c24" },
       };
     }
   };
 
   const handleSubmit = async () => {
-    if (!inputId) {
-      alert("Lütfen ID giriniz.");
+    const trimmedId = inputId.trim();
+
+    if (!trimmedId) {
+      toast.error("Lütfen ID giriniz.");
       return;
     }
 
-    const employeeRef = doc(db, "employees", inputId);
+    const employeeRef = doc(db, "employees", trimmedId);
     const employeeSnap = await getDoc(employeeRef);
 
     if (!employeeSnap.exists()) {
-      alert("Girilen ID ile eşleşen personel bulunamadı.");
+      toast.error("Girilen ID ile eşleşen personel bulunamadı.");
       return;
     }
 
-    const logsQuery = query(
+    const now = new Date();
+    const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000);
+
+    const logQuery = query(
       collection(db, "workLogs"),
-      where("employeeId", "==", inputId),
-      orderBy("timestamp", "desc"),
-      limit(1)
+      where("employeeId", "==", trimmedId),
+      where("timestamp", ">", Timestamp.fromDate(oneHourAgo))
     );
 
-    const logsSnapshot = await getDocs(logsQuery);
+    const recentLogsSnap = await getDocs(logQuery);
 
-    const now = new Date();
+    if (!recentLogsSnap.empty) {
+      toast.warn("Bu kullanıcı son 1 saat içinde zaten giriş yaptı.");
+      return;
+    }
+
     const employeeData = employeeSnap.data();
     const date = now.toISOString().split("T")[0];
     const time = now.toTimeString().split(" ")[0];
 
     await addDoc(collection(db, "workLogs"), {
-      employeeId: inputId,
+      employeeId: trimmedId,
       fullName: employeeData.fullName,
       date,
       time,
@@ -166,7 +168,7 @@ const Home = () => {
 
     setInputId("");
     fetchTodayLogs();
-    alert("Mesai kaydı başarıyla eklendi.");
+    toast.success("Mesai kaydı başarıyla eklendi!");
   };
 
   const fetchTodayLogs = async () => {
@@ -272,7 +274,7 @@ const Home = () => {
                       ...evaluation.style,
                     }}
                   >
-                    {evaluation.icon}{" "}
+                    {evaluation.icon}
                     <span style={{ marginLeft: "6px" }}>
                       {evaluation.label}
                     </span>

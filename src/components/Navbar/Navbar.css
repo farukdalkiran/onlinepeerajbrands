@@ -42,6 +42,8 @@ a {
   position: relative;
   overflow: hidden;
   cursor:pointer;
+  color: #000000;
+
 }
 
 /* Border çizgisi tanımı */

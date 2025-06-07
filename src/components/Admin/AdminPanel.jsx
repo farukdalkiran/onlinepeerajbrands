@@ -8,7 +8,7 @@ const AdminPanel = ({ onAccessGranted }) => {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    if (password === "00") {
+    if (password === "5702017") {
       onAccessGranted(); // App'e bildir
     } else {
       alert("Hatalı şifre!");

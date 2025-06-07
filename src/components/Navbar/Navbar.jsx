@@ -12,16 +12,17 @@ const Navbar = ({ setSelectedPanel, selectedPanel }) => {
           <p className="brand">Peeraj Brands</p>
         </div>
         <div className="nav">
-          <a
+          <a href="#"
             className={`nav-item ${selectedPanel === "mesai" ? "active" : ""}`}
             onClick={() => setSelectedPanel("mesai")}
           >
             Mesai Takip
           </a>
-          <a
+          <a href="#"
             className={`nav-item ${selectedPanel === "admin" ? "active" : ""}`}
             onClick={() => setSelectedPanel("admin")}
           >
+            
             <FontAwesomeIcon icon={faUnlockKeyhole} />
             <span>Yönetici Paneli</span>
           </a>

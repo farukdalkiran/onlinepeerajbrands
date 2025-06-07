@@ -4,7 +4,7 @@
 }
 
 .main-div {
-  max-width: 40rem ; /* içerik genişliğini sınırlamak için */
+  max-width: 40rem; /* içerik genişliğini sınırlamak için */
   padding: 6rem 4rem 8rem; /* kenar boşlukları azaltıldı */
   background-color: #fff;
   margin: 0 auto;
@@ -28,12 +28,14 @@
   border: 1px solid var(--lego-yellow);
   border-radius: 1rem;
   padding: 5rem;
+  width: 35%;
 }
 .log-div {
   border: 1px solid var(--lego-yellow);
   border-radius: 1rem;
   padding: 1rem;
-  height: 40rem;
+  height: fit-content;
+  width: 40rem;
 }
 .log-header {
   display: flex;
@@ -178,12 +180,10 @@
     width: 45%;
     box-sizing: border-box;
   }
-    .log-div table{
-      font-size: 14px;
-    }
- .log-div {
-  height: 36rem;
- }
+  .log-div table {
+    font-size: 14px;
+  }
+
   .barcode-div input {
     min-width: 100%;
     font-size: 16px;
@@ -211,12 +211,14 @@
     font-size: 14px;
     padding: 5px 10px;
   }
-}
-@media screen and (max-width: 1366px) {
-  .main-div {
-    padding: 2rem 1rem 4rem;
-  }
-  .panel-div{
-    padding-top: 5rem;
+  @media screen and (max-width: 968px) {
+    .mesai-div {
+      display: flex;
+      flex-direction: column;
+    }
+    .left-div,
+    .log-div {
+      width: 75%;
+    }
   }
 }

@@ -7,6 +7,7 @@ import Admin from "./components/Admin/AdminPanel";
 import AdminSettings from "./components/AdminSettings/AdminSettings";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import "./App.css";
+import { ToastContainer } from "react-toastify";
 
 
 const App = () => {
@@ -45,6 +46,7 @@ const App = () => {
           </div>
         </CSSTransition>
       </SwitchTransition>
+       <ToastContainer position="top-right" autoClose={3000} />
       <Footer />
     </>
   );
