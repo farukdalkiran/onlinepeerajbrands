@@ -3,17 +3,20 @@
   --lego-red: #da0019; /* LEGO logosundaki kırmızı */
 }
 
-.main-div {
-  max-width: 40rem; /* içerik genişliğini sınırlamak için */
-  padding: 6rem 4rem 8rem; /* kenar boşlukları azaltıldı */
-  background-color: #fff;
-  margin: 0 auto;
-  display: block;
+.panel-div {
+  display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.main-div {
+  width: 30rem;
+  padding: 6rem 4rem 8rem;
+  background-color: #fff;
   border-radius: 2rem;
   border: 1px solid #d7d7d7;
   box-sizing: border-box;
+  margin-top: 5rem;
 }
 
 .mesai-div {
@@ -21,14 +24,13 @@
   justify-content: center;
   align-items: center;
   gap: 4rem;
-  width: fit-content;
-  margin: auto;
+  margin: 1rem 0;
 }
 .left-div {
   border: 1px solid var(--lego-yellow);
   border-radius: 1rem;
   padding: 5rem;
-  width: 35%;
+  max-width: 25rem;
   background-color: #fff;
 }
 .log-div {
@@ -61,7 +63,6 @@
   color: #000;
   font-weight: 600;
 }
-
 .icon {
   font-size: 6rem;
 }
@@ -160,12 +161,17 @@
 .refresh-button:hover {
   background-color: #c82333;
 }
-
+.custom-toast {
+  color: #000 !important;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
 @media screen and (max-width: 1366px) {
   .main-div {
     padding: 3rem 2rem 4rem;
-    width: 100%;
     border-radius: 1.5rem;
+    width: 25rem;
   }
 
   .mesai-div {
@@ -178,7 +184,7 @@
 
   .left-div,
   .log-div {
-    padding: 2rem;
+    padding: 1rem;
     width: 45%;
     box-sizing: border-box;
   }
@@ -213,7 +219,7 @@
     font-size: 14px;
     padding: 5px 10px;
   }
-  @media screen and (max-width: 968px) {
+  @media screen and (max-width: 1024px) {
     .mesai-div {
       display: flex;
       flex-direction: column;

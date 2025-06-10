@@ -17,7 +17,6 @@
   border-bottom: 2px solid #ffd500; /* Lego sarısı */
   box-shadow: 0 2px 0 0 #da291c; /* Lego kırmızısı */
   background-color: #ffd500;
-  margin-bottom: 2rem;
   padding-top: 0.7rem;
 }
 
@@ -90,7 +89,6 @@ a.active::after {
   .navbar {
     padding-top: 0.3rem;
     padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
   }
 
   .container {

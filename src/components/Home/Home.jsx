@@ -184,6 +184,11 @@ const Home = () => {
     const logs = snapshot.docs.map((doc) => doc.data());
     setTodayLogs(logs);
   };
+  const refreshSuccessful = () => {
+    toast.info("Tablo Yenilendi", {
+      className: "custom-toast",
+    });
+  };
 
   useEffect(() => {
     fetchTodayLogs();
@@ -217,73 +222,96 @@ const Home = () => {
       <div className="log-div">
         <div className="log-header">
           <h3>Bugünün Kayıtları</h3>
-          <button className="refresh-button" onClick={fetchTodayLogs}>
+          <button
+            className="refresh-button"
+            onClick={() => {
+              fetchTodayLogs();
+              refreshSuccessful();
+            }}
+          >
             <FontAwesomeIcon icon={faSyncAlt} style={{ marginRight: "6px" }} />
             Yenile
           </button>
         </div>
 
-        <table
+        <div
           style={{
-            width: "100%",
-            borderCollapse: "collapse",
-            marginTop: "1rem",
+            maxHeight: "350px", // Yüksekliği sınırla
+            overflowY: "auto", // Y ekseninde scroll’a izin ver
+            overflowX: "hidden", // X taşmasını önle
           }}
         >
-          <thead>
-            <tr style={{ background: "#e0e0e0", fontWeight: "bold" }}>
-              <th style={{ padding: "8px", textAlign: "left" }}>İsim</th>
-              <th style={{ padding: "8px", textAlign: "left" }}>Giriş</th>
-              <th style={{ padding: "8px", textAlign: "left" }}>Çıkış</th>
-              <th style={{ padding: "8px", textAlign: "left" }}>
-                Değerlendirme
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {groupTodayLogs(todayLogs).map((log, index) => {
-              const entryStyle = getEntryStyle(log.giriş);
-              const exitStyle = getExitStyle(log.çıkış);
-              const evaluation = getEvaluationData(log.giriş);
+          <table
+            style={{
+              width: "100%",
+              borderCollapse: "collapse",
+              marginTop: "1rem",
+              tableLayout: "fixed", // X taşmasını önlemeye yardımcı olur
+            }}
+          >
+            <thead>
+              <tr style={{ background: "#e0e0e0", fontWeight: "bold" }}>
+                <th style={{ padding: "8px", textAlign: "left" }}>İsim</th>
+                <th style={{ padding: "8px", textAlign: "left" }}>Giriş</th>
+                <th style={{ padding: "8px", textAlign: "left" }}>Çıkış</th>
+                <th style={{ padding: "8px", textAlign: "left" }}>
+                  Değerlendirme
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {groupTodayLogs(todayLogs).map((log, index) => {
+                const entryStyle = getEntryStyle(log.giriş);
+                const exitStyle = getExitStyle(log.çıkış);
+                const evaluation = getEvaluationData(log.giriş);
 
-              return (
-                <tr key={index}>
-                  <td
-                    style={{
-                      padding: "8px",
-                      backgroundColor: "#f7f7f7",
-                      fontWeight: "500",
-                    }}
-                  >
-                    {log.fullName}
-                  </td>
-                  <td
-                    style={{ padding: "8px", fontWeight: "600", ...entryStyle }}
-                  >
-                    {log.giriş}
-                  </td>
-                  <td
-                    style={{ padding: "8px", fontWeight: "600", ...exitStyle }}
-                  >
-                    {log.çıkış}
-                  </td>
-                  <td
-                    style={{
-                      padding: "8px",
-                      fontWeight: "600",
-                      ...evaluation.style,
-                    }}
-                  >
-                    {evaluation.icon}
-                    <span style={{ marginLeft: "6px" }}>
-                      {evaluation.label}
-                    </span>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                return (
+                  <tr key={index}>
+                    <td
+                      style={{
+                        padding: "8px",
+                        backgroundColor: "#f7f7f7",
+                        fontWeight: "500",
+                      }}
+                    >
+                      {log.fullName}
+                    </td>
+                    <td
+                      style={{
+                        padding: "8px",
+                        fontWeight: "600",
+                        ...entryStyle,
+                      }}
+                    >
+                      {log.giriş}
+                    </td>
+                    <td
+                      style={{
+                        padding: "8px",
+                        fontWeight: "600",
+                        ...exitStyle,
+                      }}
+                    >
+                      {log.çıkış}
+                    </td>
+                    <td
+                      style={{
+                        padding: "8px",
+                        fontWeight: "600",
+                        ...evaluation.style,
+                      }}
+                    >
+                      {evaluation.icon}
+                      <span style={{ marginLeft: "6px" }}>
+                        {evaluation.label}
+                      </span>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
