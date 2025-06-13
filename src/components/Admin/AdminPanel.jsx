@@ -34,7 +34,7 @@ const AdminPanel = ({ onAccessGranted }) => {
               }
             }}
           />
-          <div className="btn btn-red" onClick={handleLogin}>
+          <div className="btn btn-red" onClick={handleLogin} style={{width: "100%"}}>
             Giriş Yap
           </div>
         </div>

@@ -203,7 +203,7 @@ const Home = () => {
             size="lg"
             className="icon color-yellow"
           />
-          <span className="ml-2">Mesai Takip Sistemi</span>
+          <span className="ml-2">Mesai Takip</span>
         </div>
         <div className="barcode-div">
           <input
@@ -213,7 +213,7 @@ const Home = () => {
             onChange={(e) => setInputId(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
           />
-          <div className="btn btn-yellow" onClick={handleSubmit}>
+          <div className="btn btn-yellow" onClick={handleSubmit}style={{width:"100%"}}>
             Giriş / Çıkış Yap
           </div>
         </div>

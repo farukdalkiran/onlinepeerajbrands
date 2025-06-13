@@ -23,7 +23,25 @@
 .nav-item {
   padding: 5px;
 }
-
+.logout-btn {
+  cursor: pointer;
+}
+.fa-exit {
+  margin-right: 1rem;
+}
+.logout-btn:hover,
+.logout-btn:focus {
+  outline: 0;
+  border: 1px solid #000;
+}
+.logout-btn {
+  background-color: #da0019;
+  color: #fff;
+  border: 1px solid transparent;
+  padding: 2px 10px;
+  border-radius: 10px;
+  
+}
 .container {
   margin: 0rem 14rem;
   display: flex;
@@ -40,9 +58,8 @@ a {
   text-decoration: none;
   position: relative;
   overflow: hidden;
-  cursor:pointer;
+  cursor: pointer;
   color: #000000;
-
 }
 
 /* Border çizgisi tanımı */
@@ -73,8 +90,8 @@ a.active::after {
   font-size: 1.25rem;
   color: #000000;
 }
-.nav-item span{
-  margin-left: .6rem ;
+.nav-item span {
+  margin-left: 0.6rem;
 }
 
 @media screen and (max-width: 1366px) {

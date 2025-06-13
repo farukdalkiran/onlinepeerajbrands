@@ -100,7 +100,7 @@
   font-size: 18px;
   font-weight: 500;
   height: 40px;
-  width: 100%;
+  width: fit-content;
   line-height: 20px;
   list-style: none;
   margin: 0;
@@ -116,7 +116,6 @@
   border: 2px solid transparent;
   align-self: flex-start; /* Buton inputtan küçüktür, sola yasla */
 }
-
 .btn-yellow:hover,
 .btn-yellow:focus {
   outline: 0;

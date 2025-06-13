@@ -1,0 +1,104 @@
+.entry-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #89b7ff,
+    #173a98
+  ); /* Açık mavi → Lacivert */
+  margin: 0;
+}
+.entry-main-div {
+  display: block;
+  position: relative;
+  background-color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  max-width: 24rem;
+}
+.top-header {
+  display: flex;
+}
+.fa-icon {
+  font-size: 40px;
+}
+h4 {
+  display: flex;
+  gap: 1rem;
+  font-size: 1.2rem;
+  align-items: center;
+}
+.entry-img {
+  max-width: 135px;
+  position: absolute;
+  top: 120px;
+  right: 40px;
+}
+.desc-header {
+  margin: 4rem 0 2rem;
+  display: block;
+}
+h5,
+h6 {
+  font-weight: 500;
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
+h6 {
+  color: #454545;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+}
+label {
+  font-size: 0.8rem;
+}
+.form input {
+  margin: 0.25rem 0 1.5rem;
+  padding: 8px 5px;
+  border-color: #3a3a3a48;
+  border-radius: 5px;
+}
+
+/* CSS */
+.entry-btn {
+  background-color: #222;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Farfetch Basis", "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0;
+  max-width: none;
+  min-height: 44px;
+  min-width: 10px;
+  outline: none;
+  overflow: hidden;
+  padding: 9px 20px 8px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+}
+
+.entry-btn:hover,
+.entry-btn:focus {
+  opacity: 0.75;
+}
+.info {
+  padding: 0.3rem 1rem;
+  margin-top: 2rem;
+  border-radius: 12px;
+  box-shadow: rgba(0, 47, 101, 0.504) 0px 0px 0px 3px;
+}

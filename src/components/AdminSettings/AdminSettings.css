@@ -33,11 +33,6 @@
   box-sizing: border-box;
 }
 
-
-.admin-filter .btn,
-.admin-main-div .btn {
-  width: 25%;
-}
 .employee-table {
   padding-bottom: 2rem;
 }
@@ -101,4 +96,33 @@
 
 .btn-logout:hover {
   color: #dc2626;
+}
+.btn-green {
+  background-color: rgb(25, 125, 0);
+  color: #fff;
+}
+.excel-export-btn {
+  transition: 200ms;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+.fa-download{
+  margin-right: 2rem;
+}
+.excel-export-btn:not(:disabled):hover,
+.excel-export-btn:not(:disabled):focus {
+  border: 2px solid #000;
+}
+
+.excel-export-btn:disabled {
+  filter: saturate(0.2) opacity(0.5);
+  -webkit-filter: saturate(0.2) opacity(0.5);
+  cursor: not-allowed;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
